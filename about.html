@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Building an image recognition app using React.js + ml5.js</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lovers+Quarrel" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+
+	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light ftco-navbar-light-2" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="index.html">DWW Part 2 : Artificial Intelligence</a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	        	<li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+	        	<li class="nav-item active"><a href="about.html" class="nav-link">How does it work ?</a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/ifttt-banner.png');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-2 bread">How does it work ?</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>How does it work ? <i class="ion-ios-arrow-forward"></i></span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-5">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+            <h2>How to build build a simple image recognition app ?  </h2>
+          </div>
+        </div>
+        <div class="row no-gutters">
+
+        <div class="ftco-animate" data-scrollax-parent="true">
+                <div class="text">
+            <h2>Let's start coding !</h4>
+            <p>First, we will use the terminal to create a React.js application called image-recognition using the create-react-app package:</p>
+            <img src="images/caption11.PNG" >
+            <p>Now, inside out <b>App.js </b> file, we will remove all the unnecessary code to only render a title called Image classification with <b>ML5.js.</b></p>
+            <img src="images/caption12.PNG" >
+          </div>
+        </div>
+
+        <div class="row justify-content-center ftco-animate" data-scrollax-parent="true">
+          <div class="text order-1">
+            <h2>Second Step - Choose the picture</h4>
+            <p>The image that we are going to classify is this amazing picture of a tiger. <br>
+              Download the image at  <a href="https://unsplash.com/photos/5RBXc7R-YWs">https://unsplash.com/photos/5RBXc7R-YWs</a> , rename if <b>tiger.jpg</b> and put it in your <b>src</b> folder.</p>
+            <img src="images/caption2.PNG" class="order-2" data-scrollax=" properties: { translateY: '-30%'}">
+            <p>Once you’re done, we will display the image inside our application just below our <b>h1</b> tag:</p>
+            <img src="images/caption13.PNG" class="order-2">
+          </div>
+        </div>
+
+        <div class="row justify-content-center ftco-animate" data-scrollax-parent="true">
+          <div class="text order-1">
+            <h2>Third Step - Getting started with ml5.js</h2>
+            <p>When it’s done, we will start to implement ml5.js. This library will enable our app to recognize what’s on the image we’ve just downloaded. <br>First, install the ml5.js library using the terminal:</p>
+            <img src="images/caption14.PNG" class="order-2">
+
+            <p>Once installed, we will import everything from the ml5.js library. After that, we will create a function called classifyImg inside the App component that will:</p>
+
+            <ol>
+              <li>Initialize the Image Classifier method with MobileNet.</li>
+              <li>Load the model. </li>
+              <li>Put the image to classify inside a variable called image.</li>
+              <li>Get the 5 model’s predictions and output them in the console.</li>
+            </ol>
+
+            <p> After creating the classifyImg function, we are going to call it inside the ComponentDidMount lifecycle method:</p>
+            <img src="images/caption15.PNG" class="order-2">
+
+            <p>You should see in your console an array of 5 predictions objects sorted by probability. The first predictions should be “tiger, Panthera tigris” which is a pretty accurate guess.<br> Once we have the 5 predictions, we are going to save them in the state of the App component. To do this, we need to:
+
+              <ol>
+                <li>Initialize the App component state with a predictions key with an empty array as value.</li>
+                <li>Create a function called setPredictions that take the model predictions array as argument and updated the predictions state (previously an empty array) with those 5 predictions.</li>
+                <li>Instead of printing the result in the console, we are going to return the predictions and use Promises chaining to call the newly created setPredictions function with the model predictions as parameters.</li>
+              </ol>
+
+              <img src="images/caption16.PNG" class="order-2">
+
+          </div>
+        </div>
+
+
+        <div class="row justify-content-center ftco-animate" data-scrollax-parent="true">
+          <div class="text order-1">
+            <h2>Final Step - Showing the result in the browser!</h2>
+            <p>Now that we have the predictions inside our App component state, the last thing we have to do is to output the predictions to the user.<br>
+              To do so, inside the render method, we are going to create a predictions variable that will store a default value while loading (empty div for now).<br> Once the model have made his predictions and that they’re stored in the state, we are going to map over the predictions array to display (1) the model’s prediction and (2) the probability for each of the 5 predictions.<br> Finally, we are going to display the predictions inside our app, just below our tiger image:</p>
+            <img src="images/caption17.PNG" class="order-2">
+
+
+            <p><br><br>Now that your app is fully working, you can create your own style or remove everything inside the App.css file and copy & paste the following style inside it:</p>
+            <img src="images/caption18.PNG" class="order-2">
+
+            <p><br><br>Here's the final result:</p>
+            <img src="images/bg_7.JPG" class="order-2">
+
+          </div>
+        </div>
+
+      </div>
+      </div>
+    </section>
+
+
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+          <div class="col-md-12 text-center">
+
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;<script>document.write(new Date().getFullYear());</script> Marguerite DRILHON using a template made by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+
+  </body>
+</html>
